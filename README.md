@@ -27,12 +27,16 @@ Sistem Informasi Bimbingan Akademik JKB (SIWALI JKB) adalah sistem manajemen bim
               }
         }
     ```
+    - menggunakan method __construct() untuk membuat koneksi ke database. Dalam method ini, menginisialisasi variabel yang dibutuhkan seperti $servername, $username, $password, dan $db_name, lalu membuat instance dari kelas mysqli untuk terhubung ke MySQL database. Koneksi ke database otomatis terbangun ketika sebuah objek dari kelas Database atau turunannya diinstansiasi. Ini memastikan setiap objek memiliki akses ke database tanpa perlu menulis ulang kode koneksi.
+      
 3. **Menerapkan encapsulation berdasarkan studi kasus**
     ```php
     private $servername, $username, $password, $db_name;
         protected $conn;
     
     ```
+    - Di sini, kita dapat mendeklarasikan variabel seperti $servername, $username, $password, dan $db_name sebagai private, serta $conn sebagai protected. Dengan penerapan encapsulation, akses terhadap variabel ini hanya dibatasi pada kelas dan turunannya.
+      
 4. **Menggunakan kelas turunan dengan konsep inheritance**
     ```php
     class Database {
@@ -47,6 +51,8 @@ Sistem Informasi Bimbingan Akademik JKB (SIWALI JKB) adalah sistem manajemen bim
         # code
     }
     ```
+    - membuat kelas Student dan StudentClasses yang merupakan turunan dari kelas Database. Kelas turunan ini akan mewarisi semua properti dan method yang ada di kelas induk, seperti koneksi ke database. Inheritance memungkinkan kedua kelas (Student dan StudentClasses) untuk mewarisi fungsionalitas dari kelas induk Database. Dengan demikian, kita bisa mengurangi duplikasi kode karena tidak perlu menulis ulang method __construct() untuk koneksi database di setiap kelas turunan.
+      
 5. **Menerapkan polymorphism**
     ```php
     class Student extends Database {
@@ -61,8 +67,11 @@ Sistem Informasi Bimbingan Akademik JKB (SIWALI JKB) adalah sistem manajemen bim
         }
     }
     ```
+    - mendefinisikan method tampilData() di kedua kelas Student dan StudentClasses. Meskipun nama method sama, implementasinya berbeda di setiap kelas. Polymorphism memungkinkan setiap kelas (Student dan StudentClasses) untuk memiliki method dengan nama yang sama, tetapi berperilaku berbeda. Misalnya, method tampilData() di kelas Student bisa menampilkan data mahasiswa, sedangkan method tampilData() di kelas StudentClasses menampilkan data kelas mahasiswa.
+      
 ## ERD (Entity Relationship Diagram)
-// paste ss-an di sini
+![Screenshot (54)](https://github.com/user-attachments/assets/fd4852ae-72e6-47cd-9d8a-2396ec2f02bf)
+
 
 ## Tampilan Program
 + Menampilkan seluruh isi tabel student sebagai admin
